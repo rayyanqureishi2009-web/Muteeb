@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Muteeb 🎉</title><style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+background:linear-gradient(135deg,#4facfe,#6a5acd,#836fff);
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:25px;
+max-width:700px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+color:white;
+}
+
+h1,h2{
+margin-bottom:15px;
+color:white;
+}
+
+p{
+font-size:18px;
+line-height:1.8;
+}
+
+button{
+border:none;
+padding:14px 30px;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+background:#00c3ff;
+color:white;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.gift{
+font-size:130px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+.cake{
+font-size:130px;
+animation:bounce 1.5s infinite;
+}
+
+.arrow{
+font-size:55px;
+cursor:pointer;
+margin-top:20px;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+50%{
+transform:translateY(-12px);
+}
+}
+
+.float{
+position:absolute;
+font-size:30px;
+animation:up linear infinite;
+}
+
+@keyframes up{
+from{
+transform:translateY(110vh);
+}
+to{
+transform:translateY(-120px);
+}
+}
+
+.confetti{
+position:absolute;
+font-size:22px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-100px) rotate(0deg);
+}
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+#message{
+white-space:pre-wrap;
+}
+</style></head><body><!-- PAGE 1 --><div class="page active" id="page1">
+<div class="card">
+<h1>🎉 HAPPY BIRTHDAY MUTEEB 🎉</h1>
+<p>A special surprise is waiting for you, bro! 🎁✨</p>
+<br>
+<button onclick="showPage(2)">
+🎁 Open Surprise
+</button>
+</div>
+</div><!-- PAGE 2 --><div class="page" id="page2">
+<div class="card">
+<div class="gift" onclick="showPage(3)">
+🎁
+</div><p>Tap the gift to open your birthday surprise 🎂</p>
+</div>
+</div><!-- PAGE 3 --><div class="page" id="page3">
+<div class="card">
+<h2>💌 A Message For You</h2><p id="message"></p><div class="arrow" onclick="showPage(4)">
+➡️
+</div>
+</div>
+</div><!-- PAGE 4 --><div class="page" id="page4">
+<div class="card">
+<div class="cake">🎂</div><h2>Make A Birthday Wish ✨</h2><br><button onclick="showPage(5)">
+🎈 Reveal My Birthday Wish
+</button>
+</div>
+</div><!-- PAGE 5 --><div class="page" id="page5">
+<div class="card"><h1>🎉 HAPPY BIRTHDAY MUTEEB 🎉</h1><p>
+🏆 May you achieve all your goals<br><br>
+
+💪 May you always stay strong
+
+<br><br>
+
+😄 May your life be filled with happiness
+
+<br><br>
+
+🚀 May success follow you everywhere
+
+<br><br>
+
+❤️ May Allah bless you with health, happiness and prosperity
+
+<br><br>
+
+Thank you for being such an awesome cousin.
+
+<br><br>
+
+Have an unforgettable birthday and an amazing year ahead!
+
+<br><br>
+
+🥳🎂🎉
+
+<br><br>
+
+Best Wishes From Your Cousin ❤️
+
+</p></div>
+</div><script>
+
+function showPage(num){
+
+document.querySelectorAll('.page')
+.forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById('page'+num)
+.classList.add('active');
+
+if(num===3){
+typeMessage();
+}
+
+if(num===5){
+createConfetti();
+}
+}
+
+const text=
+`Dear Muteeb,
+
+🎉 Happy Birthday, Bro! 🎉
+
+Today is all about celebrating you and the amazing person you are.
+
+I'm thankful for all the fun memories, laughter and good times we've shared together.
+
+May Allah bless you with happiness, success, good health and endless opportunities in life.
+
+Keep chasing your dreams, stay strong and always believe in yourself.
+
+Wishing you an incredible birthday and an even better year ahead.
+
+🎂 Happy Birthday, Muteeb! 🎂
+
+Your Cousin ❤️`;
+
+let typed=false;
+
+function typeMessage(){
+
+if(typed) return;
+
+typed=true;
+
+let i=0;
+
+let target=document.getElementById("message");
+
+function write(){
+
+if(i<text.length){
+
+target.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(write,35);
+}
+}
+
+write();
+}
+
+function createFloating(){
+
+const item=document.createElement("div");
+
+item.className="float";
+
+const arr=["🎈","🎉","⭐","✨","🥳"];
+
+item.innerHTML=
+arr[Math.floor(Math.random()*arr.length)];
+
+item.style.left=
+Math.random()*100+"vw";
+
+item.style.animationDuration=
+(5+Math.random()*6)+"s";
+
+document.body.appendChild(item);
+
+setTimeout(()=>{
+item.remove();
+},12000);
+}
+
+setInterval(createFloating,700);
+
+function createConfetti(){
+
+for(let i=0;i<120;i++){
+
+const c=document.createElement("div");
+
+c.className="confetti";
+
+const arr=["🎉","✨","🎊","🎈","🥳"];
+
+c.innerHTML=
+arr[Math.floor(Math.random()*arr.length)];
+
+c.style.left=
+Math.random()*100+"vw";
+
+c.style.animationDuration=
+(3+Math.random()*4)+"s";
+
+document.body.appendChild(c);
+
+}
+}
+
+</script></body>
+  </html>
